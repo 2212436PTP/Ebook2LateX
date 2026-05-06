@@ -1,0 +1,4 @@
+[
+    {"document_id": 1, "latex_content": "\\sqrt{x^2 + y^2}", "order_index": 1},
+    {"document_id": 1, "latex_content": "\\frac{a}{b}", "order_index": 2}
+]

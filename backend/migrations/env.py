@@ -18,7 +18,7 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-from models import Base  # Import Base từ file models.py của bạn
+from app.models import Base # Import Base từ file models.py của bạn
 target_metadata = Base.metadata  # Thiết lập metadata để Alembic theo dõi
 
 # other values from the config, defined by the needs of env.py,

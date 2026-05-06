@@ -4,15 +4,12 @@ from sqlalchemy import Column, String, Integer, ForeignKey, DateTime, Boolean, T
 
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 
-from sqlalchemy.ext.declarative import declarative_base
-
 from sqlalchemy.orm import relationship
 
 from sqlalchemy.sql import func
 
-# Khởi tạo lớp Base để các Model kế thừa
+from .database import Base
 
-Base = declarative_base()
 
 
 class User(Base):
@@ -127,3 +124,13 @@ class Log(Base):
     # Quan hệ ngược lại với FormulaEntry
 
     formula = relationship("FormulaEntry", back_populates="logs")
+
+class UserFavorite(Base):
+
+    __tablename__ = "user_favorites"
+
+    id = Column(Integer, primary_key=True, index=True)
+
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.user_id", ondelete="CASCADE"), nullable=False)
+
+    formula_id = Column(UUID(as_uuid=True), ForeignKey("formula_entries.id", ondelete="CASCADE"), nullable=False)
